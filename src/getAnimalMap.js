@@ -1,7 +1,8 @@
+const { employees } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 const getAnimalMap = (options) => {
-  // seu código aqui
+  const getId = employees.find((employee) => employee.id === options);
 };
 
 module.exports = getAnimalMap;
