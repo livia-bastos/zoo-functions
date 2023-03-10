@@ -9,13 +9,10 @@ const countAnimals = (animal) => {
   if (animal === undefined) {
     return animals();
   }
-  if (animal.sex === undefined) {
-    const a = animals();
-    return a[animal.species];
-  }
-  console.log(animal.species);
   const { residents } = species.find((specie) => specie.name === animal.species);
+  if (animal.sex === undefined) {
+    return residents.length;
+  }
   return residents.filter((resident) => resident.sex === animal.sex).length;
 };
-console.log(countAnimals({ species: 'lions', sex: 'male' }));
 module.exports = countAnimals;
