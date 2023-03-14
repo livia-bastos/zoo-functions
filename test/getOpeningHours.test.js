@@ -21,10 +21,23 @@ describe('Testes da função getOpeningHours', () => {
       expect(actual).toEqual(expected);
     }
     {
+      const actual = getOpeningHours('friday', '00:00-PM');
+      const expected = 'The zoo is open';
+      expect(actual).toEqual(expected);
+    }
+    {
       const actual = getOpeningHours('sunday', '09:20-PM');
       const expected = 'The zoo is closed';
       expect(actual).toEqual(expected);
     }
     expect(() => { getOpeningHours('qualquercoisa'); }).toThrow(/^The day must be valid. Example: Monday$/);
+
+    expect(() => { getOpeningHours('Friday', '13:59-pm'); }).toThrow(/^The hour must be between 0 and 12$/);
+
+    expect(() => { getOpeningHours('Friday', '12:60-pm'); }).toThrow(/^The minutes must be between 0 and 59$/);
+
+    expect(() => { getOpeningHours('Friday', 'ola'); }).toThrow('The hour should represent a number');
+
+    expect(() => { getOpeningHours('Friday', '12:12-pos'); }).toThrow('The abbreviation must be \'AM\' or \'PM\'');
   });
 });
