@@ -16,7 +16,9 @@ const validateAbbreviation = (abbreviation) => {
 };
 
 const validateHour = (hour) => {
+  // depois do number tem que ter um -
   const [number, abbreviation] = hour.toUpperCase().split('-');
+  // depois da hora separa o minuto por :
   const [dataHours, dataMinutes] = number.split(':');
   isStringRepresentNumber(dataHours, 'hour');
   isStringRepresentNumber(dataMinutes, 'minutes');
@@ -51,9 +53,13 @@ const openOrClosed = (period, hour, open, close) => {
 };
 
 const getOpeningHours = (day, dataHour) => {
+  // se parametro está vazio ele retorna const hours
   if (empty(day, dataHour)) return hours;
+  // cria variavel que recebe string e coloca primeira letra maiuscula e o restante minuscula
   const adjustedDay = `${day[0].toUpperCase()}${day.slice(1).toLowerCase()}`;
+  // se não for dia da semana, lança um erro
   validateDay(adjustedDay);
+
   validateHour(dataHour);
   const { open, close } = hours[adjustedDay];
   if (empty(close, open)) return 'The zoo is closed';
@@ -63,5 +69,5 @@ const getOpeningHours = (day, dataHour) => {
   message += openOrClosed(period, hour, open, close) ? 'open' : 'closed';
   return message;
 };
-
+console.log(getOpeningHours('sunday', '12:00-PM'));
 module.exports = getOpeningHours;
