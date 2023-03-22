@@ -1,17 +1,15 @@
 // const { employees } = require('../data/zoo_data');
-// const { species } = require('../data/zoo_data');
-// const data = require('../data/zoo_data');
+const { species } = require('../data/zoo_data');
+const data = require('../data/zoo_data');
 
-// const animalByLocation = (location) => {
-//   if (species.location === location) {
-//     return species.filter((specie) => specie.location === location).map((specie) => specie.name);
-//   }
-//   console.log(animalByLocation('NE'));
-// };
+const animalByLocation = (location) => species.filter((specie) => specie
+  .location === location).map((specie) => specie.name);
 
-// const getAnimalMap = (options) => {
-//   const getlocation = species.find((specie) => specie.location === options);
-//   return
-// };
+console.log(animalByLocation('NE'));
 
-// module.exports = getAnimalMap;
+const getAnimalMap = (options) => {
+  // const getlocation = species.filter((specie) => specie.location === options).location;
+  // return { getlocation: animalByLocation(location) };
+};
+
+module.exports = getAnimalMap;
